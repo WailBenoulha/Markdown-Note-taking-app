@@ -33,6 +33,8 @@ class ListNotes(APIView):
         return Response(serializer.data,status=status.HTTP_200_OK)
     
 import language_tool_python
+# this library is for checking grammar of the text
+# here we check the grammar of the note field (its a foreign key of Note class)
 
 class CheckGrammer(APIView):
     serializer_class = SubNoteSerializer
