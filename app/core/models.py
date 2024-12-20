@@ -10,7 +10,6 @@ class Note(models.Model):
     def __str__(self):
         return self.title
     
-    # def save(self,*args,**kwargs):
-    #     if not self.note.name.endswith(('.md','.markdown')):
-    #         raise ValidationError('File must be a markdown file')
-    #     super().save(*args, **kwargs)
+
+class SubNote(models.Model):
+    note = models.ForeignKey(Note,on_delete=models.CASCADE,related_name='subnote')    
