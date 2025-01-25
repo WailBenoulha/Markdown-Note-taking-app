@@ -28,8 +28,14 @@ python3 -m venv $PROJECT_BASE_PATH/env
 # Install python packages
 $PROJECT_BASE_PATH/env/bin/pip install -r $PROJECT_BASE_PATH/requirements.txt
 
+# Check if manage.py exists in the app directory
+if [ ! -f "$PROJECT_BASE_PATH/app/manage.py" ]; then
+    echo "Error: manage.py not found in the app directory!"
+    exit 1
+fi
+
 # Run migrations and collectstatic
-cd $PROJECT_BASE_PATH
+cd $PROJECT_BASE_PATH/app
 $PROJECT_BASE_PATH/env/bin/python manage.py migrate
 $PROJECT_BASE_PATH/env/bin/python manage.py collectstatic --noinput
 
